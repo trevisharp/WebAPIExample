@@ -16,6 +16,7 @@ public class CpfService
         throw new NotImplementedException();
     }
 
+    // detalhes em: https://www.calculadorafacil.com.br/computacao/validar-cpf
     private string getValidationDigits(string cpf9digits)
     {
         throw new NotImplementedException();
