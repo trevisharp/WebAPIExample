@@ -14,6 +14,13 @@ builder.Services.AddSingleton<CpfService>(p =>
     return service;
 });
 
+builder.Services.AddSingleton<CEPService>(p =>
+{
+    string baseUrl = "https://viacep.com.br/ws/{cep}/json/";
+    CEPService service = new CEPService(baseUrl);
+    return service;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
