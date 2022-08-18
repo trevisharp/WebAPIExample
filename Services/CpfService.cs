@@ -19,6 +19,20 @@ public class CpfService
     // detalhes em: https://www.calculadorafacil.com.br/computacao/validar-cpf
     private string getValidationDigits(string cpf9digits)
     {
-        throw new NotImplementedException();
+        int digit0 = 0, digit1 = 0;
+        for (int i = 0; i < cpf9digits.Length; i++)
+        {
+            var digit = cpf9digits[i] - '0';
+            digit0 += digit * (i + 1);
+            digit1 += digit * i;
+        }
+        digit0 %= 11;
+        digit0 %= 10;
+        
+        digit1 += 9 * digit0;
+        digit1 %= 11;
+        digit1 %= 10;
+
+        return digit0.ToString() + digit1.ToString();
     }
 }
