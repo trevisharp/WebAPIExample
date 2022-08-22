@@ -17,6 +17,9 @@ public class CpfController : ControllerBase
         [FromServices]CpfService cpfService
     )
     {
-        throw new NotImplementedException();
+        return new {
+            Status = "Success",
+            Cpf = cpfService.Generate()
+        };
     }
 }
