@@ -37,7 +37,8 @@ public class CpfController : ControllerBase
             
             return new {
                 Status = "Success",
-                IsValid = cpfService.Validate(cpf)
+                Message = "The CPF was validated",
+                Data = cpfService.Validate(cpf)
             };
         }
         catch
