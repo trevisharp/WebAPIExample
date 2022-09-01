@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using WebAPIExample.Model;
+using System.Security.Cryptography;
+using static System.Text.Encoding;
+using static System.Convert;
 
 [ApiController]
 [Route("user/")]
@@ -31,11 +34,24 @@ public class UserController : ControllerBase
             };
         }
 
+        byte[] data = ASCII.GetBytes(usuario.Senha);
+        using SHA256 sha = SHA256.Create();
+        var hash = sha.ComputeHash(data);
+        usuario.Senha = ToBase64String(hash);
+
         await userService.Register(usuario);
         return new {
             Status = "Success",
             Message = "Usuário registrado com sucesso",
             Data = usuario.Id
         };
+    }
+
+    [HttpPost("login")]
+    public async Task<object> Login(
+        [FromBody]Usuario usuario,
+        [FromServices]UserService userService)
+    {
+        throw new NotImplementedException();
     }
 }
