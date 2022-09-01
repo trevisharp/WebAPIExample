@@ -19,3 +19,5 @@ create table Usuario(
 	CEP int not null
 );
 go
+
+select * from Usuario
