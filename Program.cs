@@ -21,6 +21,12 @@ builder.Services.AddSingleton<CEPService>(p =>
     return service;
 });
 
+builder.Services.AddScoped<UserService>(p =>
+{
+    UserService service = new UserService();
+    return service;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

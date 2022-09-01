@@ -7,8 +7,7 @@ public class CpfController : ControllerBase
     [HttpGet("validate/{cpf}")]
     public object Validate(
         [FromServices]CpfService cpfService,
-        string cpf
-    )
+        string cpf)
     {
         try
         {
@@ -30,8 +29,9 @@ public class CpfController : ControllerBase
             if (cpf.Length != 11 || !hasOnlyNumbers)
             {
                 return new {
-                    Status = "Fail",
-                    Message = "Invalid cpf data"
+                    Status = "Success",
+                    Message = "The CPF was validated",
+                    Data = false
                 };
             }
             

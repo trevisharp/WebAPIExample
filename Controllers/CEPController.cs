@@ -35,6 +35,7 @@ public class CEPController : ControllerBase
             
             return new {
                 Status = "Success",
+                Message = "CEP encontrado com sucesso.",
                 Data = cepData
             };
         }
